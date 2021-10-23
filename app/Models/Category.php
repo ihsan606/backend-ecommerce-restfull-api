@@ -17,8 +17,8 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function getImageAttributes($image)
+    public function getImageAttribute($image)
     {
-        return asset('storege/categories/' . $image);
+        return asset('storage/categories/' . $image);
     }
 }
