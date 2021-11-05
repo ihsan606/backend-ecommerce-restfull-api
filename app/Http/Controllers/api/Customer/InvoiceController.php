@@ -17,14 +17,17 @@ class InvoiceController extends Controller
         return new InvoiceResource(true,'LIST DATA INVOICES',$invoices);
     }
 
-    public function show($snap_token){
-        $invoice = Invoice::with('orders.product','customer','city','province')->where('customer_id',auth()->guard('api_customer')->user()->id->where('snap_token',$snap_token));
-
-        if($invoice){
-            return new InvoiceResource(true,' Detail Data Invoice : '.$invoice->snap_token.'',$invoice);
+    public function show($snap_token)
+    {
+        $invoice = Invoice::with('orders.product', 'customer', 'city', 'province')->where('customer_id', auth()->guard('api_customer')->user()->id)->where('snap_token', $snap_token)->first();
+        
+        if($invoice) {
+            //return success with Api Resource
+            return new InvoiceResource(true, 'Detail Data Invoice : '.$invoice->snap_token.'', $invoice);
         }
 
-        return new InvoiceResource(false,' Detail Data Invoice Tidak Ditemukan',null);
+        //return failed with Api Resource
+        return new InvoiceResource(false, 'Detail Data Invoice Tidak DItemukan!', null);
     }
 
 

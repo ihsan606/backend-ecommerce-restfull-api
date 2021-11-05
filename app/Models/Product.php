@@ -32,9 +32,13 @@ class Product extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function getImageAttributes($image){
-        return asset('storage/products/'.$image);
+
+
+    public function getImageAttribute($image)
+    {
+        return asset('storage/products/' . $image);
     }
+      
 
     public function getReviewsAvgRatingAttribute($value) {
         return $value ? substr($value, 0, 3) : 0;
