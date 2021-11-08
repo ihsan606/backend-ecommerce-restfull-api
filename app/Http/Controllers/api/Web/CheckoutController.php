@@ -66,7 +66,7 @@ class CheckoutController extends Controller
 
                 //insert product ke table order
                 $invoice->orders()->create([
-                    'invoice_id'    => $invoice->id,   
+                    'invoice_id'    => $invoice->id,
                     'product_id'    => $cart->product_id,
                     'qty'           => $cart->qty,
                     'price'         => $cart->price,

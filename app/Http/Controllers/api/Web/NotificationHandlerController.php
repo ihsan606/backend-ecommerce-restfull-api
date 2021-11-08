@@ -48,7 +48,7 @@ class NotificationHandlerController extends Controller
                 ]);
             }elseif($transaction=='deny'){
                 $data_transaction->update([
-                    'status' =>'failde',
+                    'status' =>'failed',
                 ]);
             }elseif($transaction=='expire'){
                 $data_transaction->update([
